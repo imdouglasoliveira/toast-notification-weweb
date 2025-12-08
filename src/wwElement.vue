@@ -1,7 +1,7 @@
 <template>
   <div :class="['toast-notification-host', `position-${content.position}`]">
-    <!-- Editor Placeholder - Only visible in WeWeb Editor when no toasts -->
-    <div v-if="isEditor && activeToasts.length === 0" class="toast-editor-placeholder">
+    <!-- Editor Placeholder - Only visible when explicitly enabled -->
+    <div v-if="showPlaceholder" class="toast-editor-placeholder">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -70,9 +70,11 @@ export default {
     };
   },
   computed: {
-    isEditor() {
-      // Detects if running in WeWeb Editor
-      return typeof window !== 'undefined' && window.location && window.location.href.includes('weweb');
+    showPlaceholder() {
+      // Only show placeholder when:
+      // 1. User explicitly enabled it via settings AND
+      // 2. No toasts are currently active
+      return this.content.showEditorPlaceholder === true && this.activeToasts.length === 0;
     },
     defaultDuration() {
       return this.content.defaultDuration || 5000;
@@ -87,6 +89,7 @@ export default {
     maxToasts: 5,
     language: 'en',
     showTimestamp: true,
+    showEditorPlaceholder: false,
     // Success Colors
     successBackgroundColor: '#d1fae5',
     successBorderColor: '#10b981',

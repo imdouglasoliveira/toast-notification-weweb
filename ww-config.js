@@ -71,6 +71,15 @@ export default {
       defaultValue: true,
       section: "settings",
     },
+    showEditorPlaceholder: {
+      label: {
+        en: "Show Editor Placeholder",
+        pt: "Exibir Placeholder do Editor",
+      },
+      type: "OnOff",
+      defaultValue: false,
+      section: "settings",
+    },
     // Success Toast Colors
     successBackgroundColor: {
       label: {
