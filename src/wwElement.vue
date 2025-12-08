@@ -89,7 +89,7 @@ export default {
     maxToasts: 5,
     language: 'en',
     showTimestamp: true,
-    showEditorPlaceholder: false,
+    showEditorPlaceholder: true,
     // Success Colors
     successBackgroundColor: '#d1fae5',
     successBorderColor: '#10b981',

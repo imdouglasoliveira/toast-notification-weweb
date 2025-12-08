@@ -77,8 +77,15 @@ export default {
         pt: "Exibir Placeholder do Editor",
       },
       type: "OnOff",
-      defaultValue: false,
+      defaultValue: true,
+      bindable: true,
       section: "settings",
+      options: {
+        info: {
+          en: "Toggle OFF to hide placeholder after configuring workflows",
+          pt: "Desative para ocultar o placeholder após configurar workflows",
+        },
+      },
     },
     // Success Toast Colors
     successBackgroundColor: {
