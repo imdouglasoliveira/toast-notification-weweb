@@ -1,5 +1,4 @@
 export default {
-  name: "Toast Notification Host",
   editor: {
     label: {
       en: "Toast Notification Host",
