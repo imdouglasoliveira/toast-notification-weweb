@@ -7,8 +7,5 @@
   },
   "devDependencies": {
     "@weweb/cli": "latest"
-  },
-  "dependencies": {
-    "lucide-vue-next": "^0.556.0"
   }
 }
