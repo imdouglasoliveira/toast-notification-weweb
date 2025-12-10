@@ -82,7 +82,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.content.showEditorPlaceholder !== false && this.activeToasts.length === 0;
+      return this.content.showEditorPlaceholder !== false;
     },
     defaultDuration() {
       return this.content.defaultDuration || 5000;
@@ -280,23 +280,23 @@ export default {
 }
 
 .toast-container.position-top-right {
-  top: 24px;
-  right: 24px;
+  top: 16px;
+  right: 16px;
 }
 
 .toast-container.position-top-left {
-  top: 24px;
-  left: 24px;
+  top: 16px;
+  left: 16px;
 }
 
 .toast-container.position-bottom-right {
-  bottom: 24px;
-  right: 24px;
+  bottom: 16px;
+  right: 16px;
 }
 
 .toast-container.position-bottom-left {
-  bottom: 24px;
-  left: 24px;
+  bottom: 16px;
+  left: 16px;
 }
 
 .toast-list {
@@ -416,12 +416,12 @@ export default {
 /* Mobile */
 @media (max-width: 768px) {
   .toast-container {
-    top: 16px !important;
-    left: 50% !important;
-    right: auto !important;
+    top: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
     bottom: auto !important;
-    transform: translateX(-50%);
-    width: 90%;
+    transform: none;
+    width: calc(100% - 16px);
   }
 
   .toast-item {
