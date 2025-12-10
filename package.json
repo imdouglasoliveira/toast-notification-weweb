@@ -2,7 +2,7 @@
   "name": "toast-notification",
   "version": "0.0.1",
   "scripts": {
-    "build": "weweb build name=toast-notification type=wwobject",
+    "build": "weweb build -- name=toast-notification type=wwobject",
     "serve": "weweb serve"
   },
   "devDependencies": {

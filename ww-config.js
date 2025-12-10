@@ -379,7 +379,7 @@ export default {
       ],
     },
   ],
-  events: [
+  triggerEvents: [
     {
       name: "toastShown",
       label: {

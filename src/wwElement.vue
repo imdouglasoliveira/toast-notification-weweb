@@ -83,37 +83,6 @@ export default {
       return this.content.maxToasts || 5;
     },
   },
-  wwDefaultContent: {
-    defaultDuration: 5000,
-    position: 'top-right',
-    maxToasts: 5,
-    language: 'en',
-    showTimestamp: true,
-    showEditorPlaceholder: true,
-    // Success Colors
-    successBackgroundColor: '#d1fae5',
-    successBorderColor: '#10b981',
-    successTextColor: '#064e3b',
-    successIconColor: '#10b981',
-    // Info Colors
-    infoBackgroundColor: '#dbeafe',
-    infoBorderColor: '#3b82f6',
-    infoTextColor: '#1e3a8a',
-    infoIconColor: '#3b82f6',
-    // Warning Colors
-    warningBackgroundColor: '#fef3c7',
-    warningBorderColor: '#f59e0b',
-    warningTextColor: '#78350f',
-    warningIconColor: '#f59e0b',
-    // Error Colors
-    errorBackgroundColor: '#fee2e2',
-    errorBorderColor: '#ef4444',
-    errorTextColor: '#7f1d1d',
-    errorIconColor: '#ef4444',
-    // Icon Sizes
-    mainIconSize: 20,
-    closeIconSize: 16,
-  },
   methods: {
     showSuccessToast(title, description, durationMs) {
       this.showToast({
