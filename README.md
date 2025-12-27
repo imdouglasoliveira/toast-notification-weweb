@@ -4,123 +4,169 @@
 [![Vue 3](https://img.shields.io/badge/Vue-3-green)](https://vuejs.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-Um componente WeWeb reutilizável para exibir notificações toast personalizadas com suporte a 4 tipos (success, info, warning, error), auto-dismiss configurável e integração via Workflow.
+**[English]** | [Portugues](README.pt-BR.md)
 
-![Toast Notification Demo](docs/toast-demo.png)
+A reusable WeWeb component for displaying customizable toast notifications with support for 4 types (success, info, warning, error), configurable auto-dismiss, and seamless Workflow integration.
 
-## 🚀 Quick Start
+![Toast Notification Examples](docs/img/toast_examples.png)
 
-### Desenvolvimento Local
+## Why This Component?
+
+Every app needs feedback: *success*, *error*, *warning*, *info*... and developers usually end up rebuilding toast notifications from scratch on every project.
+
+**Import once, reuse everywhere.**
+
+- Import the coded component into your project a single time
+- Configure it on one page
+- On other pages, just use **"Create an instance"** and wire it to your workflows
+- Each workflow only sends the **title, description and durationMs** when calling the component action
+
+This keeps UX consistent across the whole app while still letting each page decide *what* to say.
+
+## Features
+
+- 4 toast types: success, info, warning, error
+- Configurable auto-dismiss (default: 5000ms, max: 30s)
+- Flexible positioning (4 desktop positions)
+- **Mobile responsive** (centered at top, 90% width)
+- Automatic queue with toast limit
+- Payload validation with error events
+- Conditional rendering (optional description)
+- Smooth animations adapted per device
+- Full WeWeb Workflow integration
+
+**Configurable from the editor:**
+
+- Default duration (ms)
+- Position (top/bottom, left/right)
+- Max number of toasts on screen
+- Language + timestamp visibility
+- Icon sizes
+- Colors for each toast type (success, error, warning, info)
+
+## Quick Start
+
+### Local Development
 
 ```bash
-# Instalar dependências
+# Install dependencies
 npm install
 
-# Iniciar servidor de desenvolvimento
+# Start development server
 npm run serve --port=8080
 ```
 
-Depois, no WeWeb Editor:
-1. Vá em **Dev** → **Add local Element**
-2. Nome: `toast-notification`, Porta: `8080`
-3. Aceite o certificado SSL
+Then, in WeWeb Editor:
+1. Go to **Dev** > **Add local Element**
+2. Name: `toast-notification`, Port: `8080`
+3. Accept the SSL certificate
 
-### Uso em Produção
+### Production Usage
 
-1. Publique este repo no GitHub
-2. No WeWeb Dashboard: adicione como **Source Code**
-3. No WeWeb Editor: arraste o componente para sua página
-4. Use **Execute Component Action** nos Workflows
+1. Publish this repo on GitHub
+2. In WeWeb Dashboard: add as **Source Code**
+3. In WeWeb Editor: drag the component to your page
+4. Use **Execute Component Action** in Workflows
 
-## 📋 Documentação
+## Configuration
 
-- **[WORKFLOW-GUIDE.md](WORKFLOW-GUIDE.md)** - 🔥 **COMECE AQUI: Como usar via Workflow** (passo a passo)
-- **[QUICK-FIX-INVALID-VALUE.md](QUICK-FIX-INVALID-VALUE.md)** - ⚡ **Fix rápido para erro "Invalid value"**
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - 🔧 Guia completo de resolução de problemas
-- **[README-COMPONENT.md](README-COMPONENT.md)** - Documentação completa do componente (instalação, API, configuração)
-- **[EXAMPLES.md](EXAMPLES.md)** - Exemplos práticos de payloads e casos de uso
-- **[docs/](docs/)** - PRD, ADR e processo de desenvolvimento WeWeb
+All properties are configurable directly from the WeWeb editor:
 
-## 💡 Exemplo de Uso
+![Toast Configuration Options](docs/img/toast_options.png)
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| Default Duration | Number | 5000 | Duration in milliseconds |
+| Position | Select | Bottom Left | Toast position on screen |
+| Max Toasts | Number | 5 | Maximum toasts visible at once |
+| Language | Select | English | Language for timestamps |
+| Show Timestamp | Toggle | On | Display time on toasts |
+| Main Icon Size | Number | 20 | Size of the toast icon |
+| Close Icon Size | Number | 16 | Size of the close button |
+| Success Colors | Color | Green tones | Background, border, text, icon |
+| Error Colors | Color | Red tones | Background, border, text, icon |
+| Warning Colors | Color | Yellow tones | Background, border, text, icon |
+| Info Colors | Color | Blue tones | Background, border, text, icon |
+
+## Workflow Integration
+
+Use **Execute Component Action** to trigger toasts from any workflow:
+
+![Workflow Configuration](docs/img/toast_configuration.png)
+
+### Payload API
+
+#### Required Fields
+
+| Field | Type | Values |
+|-------|------|--------|
+| `type` | String | `"success"`, `"info"`, `"warning"`, `"error"` |
+| `title` | String | Any string |
+
+#### Optional Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `description` | String | Additional text (not rendered if omitted) |
+| `durationMs` | Number | Custom duration in ms |
+
+### Example Payload
 
 ```json
 {
   "type": "success",
-  "title": "Salvo com sucesso",
-  "description": "Suas alterações foram salvas.",
+  "title": "Saved successfully",
+  "description": "Your changes have been saved.",
   "durationMs": 5000
 }
 ```
 
-## 🎯 Features
+## Visual Examples
 
-- ✅ 4 tipos de toast: success, info, warning, error
-- ✅ Auto-dismiss configurável (default: 5000ms, máx: 30s)
-- ✅ Posicionamento flexível (4 posições no desktop)
-- ✅ **Responsivo para mobile** (centralizado no topo, 90% width)
-- ✅ Queue automática com limite de toasts
-- ✅ Validação de payload com eventos de erro
-- ✅ Renderização condicional (description opcional)
-- ✅ Animações suaves adaptadas por dispositivo
-- ✅ Totalmente integrado com Workflows WeWeb
+### All Toast Types
 
-## 📂 Estrutura do Projeto
+![All Toast Types](docs/img/toast_examples.png)
+
+### Top Right Position
+
+![Top Right Position](docs/img/toast_examples_rigth_top.png)
+
+## Project Structure
 
 ```
 toast_notification_vue/
 ├── src/
-│   ├── wwElement.vue              # Componente host principal
+│   ├── wwElement.vue              # Main host component
 │   └── components/
-│       └── ToastItem.vue          # Item individual de toast
+│       └── ToastItem.vue          # Individual toast item
 ├── docs/
-│   ├── prd.md                     # Product Requirements Document
-│   ├── adr.md                     # Architectural Decision Record
-│   ├── toast.md                   # Especificação do payload
-│   └── weweb/
-│       └── development_process.md # Processo de dev WeWeb
-├── ww-config.js                   # Configuração WeWeb
-├── package.json                   # Dependências e scripts
-├── README.md                      # Este arquivo
-├── README-COMPONENT.md            # Documentação completa
-└── EXAMPLES.md                    # Exemplos práticos
+│   └── img/                       # Documentation images
+├── ww-config.js                   # WeWeb configuration
+├── package.json                   # Dependencies and scripts
+├── README.md                      # This file (English)
+└── README.pt-BR.md                # Portuguese version
 ```
 
-## 🔧 Scripts Disponíveis
+## Available Scripts
 
 ```bash
-npm run serve          # Dev server (porta padrão: 8080)
-npm run build          # Build de produção
+npm run serve          # Dev server (default port: 8080)
+npm run build          # Production build
 ```
 
-## 📦 Payload API
+## Contributing
 
-### Campos Obrigatórios
+1. Fork the project
+2. Create a branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
 
-| Campo | Tipo | Valores |
-|-------|------|---------|
-| `type` | String | `"success"`, `"info"`, `"warning"`, `"error"` |
-| `title` | String | Qualquer string |
-
-### Campos Opcionais
-
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| `description` | String | Texto adicional (não renderiza se omitido) |
-| `durationMs` | Number | Duração customizada em ms |
-
-## 🤝 Contribuindo
-
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
-
-## 📄 License
+## License
 
 MIT
 
-## 🔗 Links Úteis
+## Useful Links
 
 - [WeWeb Developer Docs](https://developer.weweb.io/)
 - [WeWeb Component Documentation](https://docs.weweb.io/components/)
@@ -128,4 +174,4 @@ MIT
 
 ---
 
-**Desenvolvido para WeWeb** | Componente reutilizável Vue 3
+**Developed for WeWeb** | Reusable Vue 3 Component | Made in Brazil
